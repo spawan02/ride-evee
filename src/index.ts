@@ -5,7 +5,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 dotenv.config();
@@ -18,5 +18,6 @@ mongoose
     .catch((err) => console.error("MongoDB connection error:", err));
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Swagger documentation is available at http://localhost:${PORT}/api-docs`);
+  });
