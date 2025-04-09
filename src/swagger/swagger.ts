@@ -15,7 +15,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'https://imf.itsarc.me/',
+        url: 'https://evee.itsarc.me/',
         description: 'Production server on Railway',
       },
     ],
