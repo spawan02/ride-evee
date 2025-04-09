@@ -3,7 +3,7 @@ import { otpSchema, signInSchema, signUpSchema } from "../validation/userSchema"
 import { comparePassword, hashPassword } from "../utils";
 import jwt from "jsonwebtoken";
 import transporter from '../config/mailer';
-import User from "../models/user";
+import User from "../models/User";
 import Otp from "../models/Otp";
 
 
