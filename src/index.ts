@@ -10,7 +10,7 @@ const PORT = 3000;
 app.use(cors());
 dotenv.config();
 app.use(express.json());
-app.use("/", router);
+app.use("/api", router);
 
 mongoose
     .connect(process.env.MONGO_URI as string)

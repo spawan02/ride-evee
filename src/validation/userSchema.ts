@@ -2,9 +2,9 @@ import { z } from "zod";
 export const signUpSchema = z.object({
     name: z.string(),
     email: z.string(),
-    phone: z.number(),
+    phone: z.string(),
     password: z.string(),
-    type: z.enum(["admin", "user"]),
+    type: z.enum(["admin", "user"]).optional(),
 });
 
 export const signInSchema = z.object({
@@ -12,16 +12,17 @@ export const signInSchema = z.object({
     password: z.string(),
 });
 
-
 export const userCreateSchema = z.object({
     name: z.string(),
     email: z.string().email(),
     phone: z.string(),
     password: z.string(),
-    role: z.enum(["user", "admin"])
-})
+    role: z.enum(["user", "admin"]),
+});
 
 export const userUpdateSchema = z.object({
-    id: z.string()
-})
-export const otpSchema = z.object({email: z.string().email("should contain only email")})
+    id: z.string(),
+});
+export const otpSchema = z.object({
+    email: z.string().email("should contain only email"),
+});

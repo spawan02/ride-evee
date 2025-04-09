@@ -3,17 +3,15 @@ export interface IUserInput {
     email: string;
     phone: string;
     password: string;
-    role?: 'user' | 'admin';
-  }
-declare global {
-  namespace Express {
-    export interface Request {
-      user: {
-        userId: string
-        role: string;
-      };
-
-    }
-  }
+    role?: "user" | "admin";
 }
-
+declare global {
+    namespace Express {
+        export interface Request {
+            user: {
+                userId: string;
+                role: string;
+            };
+        }
+    }
+}
