@@ -110,7 +110,7 @@ components:
           example: "123456"
 
 paths:
-  api/auth/signup:
+  /api/auth/signup:
     post:
       tags:
         - Auth
@@ -134,7 +134,7 @@ paths:
         "400":
           description: Bad Request – Invalid input or email already exists.
 
-  api/auth/login:
+  /api/auth/login:
     post:
       tags:
         - Auth
@@ -158,7 +158,7 @@ paths:
         "400":
           description: Invalid credentials.
           
-  api/auth/otp/send:
+  /api/auth/otp/send:
     post:
       tags:
         - Auth
@@ -175,7 +175,7 @@ paths:
         "400":
           description: Bad Request – Invalid input.
 
-  api/auth/otp/verify:
+  /api/auth/otp/verify:
     post:
       tags:
         - Auth
@@ -192,7 +192,7 @@ paths:
         "400":
           description: Invalid OTP or OTP expired.
 
-  api/users:
+  /api/users:
     get:
       tags:
         - Users
@@ -234,7 +234,7 @@ paths:
         "403":
           description: Forbidden – Insufficient permissions.
 
-  api/users/{id}:
+  /api/users/{id}:
     get:
       tags:
         - Users
