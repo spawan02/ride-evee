@@ -131,7 +131,7 @@ router.post("/otp/send", async (req, res) => {
 router.post("/otp/verify", async (req, res) => {
     try {
         const { email, otp } = req.body;
-        const otpRecord = await Otp.findOne(otp);
+        const otpRecord = await Otp.findOne({otp});
         if (!otpRecord) {
             res.status(400).json({
                 message: "No OTP requested for this email",
