@@ -26,10 +26,10 @@ export const userMiddleware = (
 
     jwt.verify(token, JWT_PASSWORD, (err, decoded) => {
         const payload = decoded as JwtPayload;
-        if (err)
-            return res
-                .status(403)
-                .json({ message: "Invalid or expired token" });
+        if (err){
+            res.status(403).json({ message: "Invalid or expired token" });
+            return
+        }
         (req as any).userId = payload.userId;
         (req as any).role = payload.role;
         next();
