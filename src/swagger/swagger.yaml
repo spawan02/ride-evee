@@ -254,7 +254,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: "60d0fe4f5311236168a109ca"
         "403":
           description: Forbidden – Insufficient permissions.
         "404":

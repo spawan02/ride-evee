@@ -5,6 +5,7 @@ export interface JwtPayload {
     userId: string;
     role: string;
 }
+const JWT_PASSWORD = process.env.JWT_PASSWORD || "secret1323"
 
 export const userMiddleware = (
     req: Request,
@@ -23,7 +24,7 @@ export const userMiddleware = (
         return;
     }
 
-    jwt.verify(token, process.env.JWT_SECRET as string, (err, decoded) => {
+    jwt.verify(token, JWT_PASSWORD, (err, decoded) => {
         const payload = decoded as JwtPayload;
         if (err)
             return res
