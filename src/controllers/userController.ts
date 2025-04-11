@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-import { userCreateSchema, userUpdateSchema } from "../validation/userSchema";
+import { userSchema, userUpdateSchema } from "../validation/userSchema";
 import { hashPassword } from "../utils";
 import User, { IUser } from "../models/User";
 
@@ -48,7 +48,7 @@ export const createUser = async (req: Request, res: Response) => {
             });
             return;
         }
-        const validation = userCreateSchema.safeParse(req.body);
+        const validation = userSchema.safeParse(req.body);
         if (!validation.success) {
             res.status(404).json({
                 message: "Error",

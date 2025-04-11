@@ -2,7 +2,8 @@ import express from "express";
 import {
     otpSchema,
     signInSchema,
-    signUpSchema,
+    userSchema,
+    
 } from "../validation/userSchema";
 import { comparePassword, hashPassword } from "../utils";
 import jwt from "jsonwebtoken";
@@ -14,14 +15,14 @@ const router = express.Router();
 const JWT_PASSWORD = process.env.JWT_PASSWORD || "password";
 
 router.post("/signup", async (req, res) => {
-    const validation = signUpSchema.safeParse(req.body);
+    const validation = userSchema.safeParse(req.body);
     if (!validation.success) {
         res.status(400).json({
             message: "Invalid Entry",
         });
         return;
     }
-    const { name, email, password, phone, type } = validation.data;
+    const { name, email, password, phone, role } = validation.data;
     const existingUser = await User.findOne({ email });
     if (existingUser) {
         res.status(400).json({
@@ -42,6 +43,7 @@ router.post("/signup", async (req, res) => {
             email,
             phone,
             password: hashedPassword,
+            role
         });
         newUser.save();
         const payload = { userId: newUser.id, role: newUser.role };
