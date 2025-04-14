@@ -10,7 +10,7 @@ export const userSchema = z.object({
     email: z.string().email(),
     phone: z.string(),
     password: z.string(),
-    role: z.enum(["user", "admin"]),
+    role: z.enum(["user", "admin"]).optional(),
 });
 
 export const userUpdateSchema = z.object({

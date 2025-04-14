@@ -49,7 +49,7 @@ router.post("/signup", async (req, res) => {
         const payload = { userId: newUser.id, role: newUser.role };
         const token = jwt.sign(payload, JWT_PASSWORD, { expiresIn: "1h" });
 
-        res.status(200).json({ token });
+        res.status(201).json({ token });
     } catch (e: any) {
         res.status(400).json({
             message: e.message,
@@ -82,7 +82,7 @@ router.post("/login", async (req, res) => {
             return;
         }
         const payload = { userId: existingUser.id, role: existingUser.role };
-        const token = jwt.sign(payload, JWT_PASSWORD, { expiresIn: "1h" });
+        const token = jwt.sign(payload, JWT_PASSWORD);
         res.status(200).json({ token });
     } catch (e) {
         res.status(400).json({
